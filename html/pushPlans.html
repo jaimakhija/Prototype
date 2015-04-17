@@ -1,5 +1,26 @@
-<input type="text" class="form-control" ng-model="pushPlanFilter" placeholder="search">
-<accordion>
-    <accordion-group heading="{{plan.name}} -- {{plan.date}}" ng-repeat="plan in pushPlanList | filter:pushPlanFilter">
-        {{plan.content}}
-    </accordion-group>
+<div class="container">
+    <div class='row'>
+        <div class="">
+            <input type="text" class="form-control" ng-model="filterName" placeholder="search" ng-change="updateFilter()">
+        </div>
+        <div class="">
+            <label class="checkbox-inline">
+                <input ng-model="filterManual" ng-change="updateFilter()" type="checkbox">Manual
+            </label>
+            <label class="checkbox-inline ">
+                <input ng-model="filterDatabase " ng-change="updateFilter()" type="checkbox">Database
+            </label>
+        </div>
+    </div>
+    <div class="row ">
+        <accordion close-others="false ">
+            <accordion-group ng-class="{ approved: plan.status==='approved' , proposed: plan.status==='proposed' , rejected: plan.status==='rejected' } " ng-repeat="plan in pushPlanList | filter:filter ">
+                <accordion-heading>
+                    <i ng-if="plan.flags.manual " class="fa fa-user "></i>
+                    <i ng-if="plan.flags.database " ) class="fa fa-table "></i> {{plan.name}} -- {{plan.date}}
+                </accordion-heading>
+                {{plan.content}} {{plan.status}}
+            </accordion-group>
+        </accordion>
+    </div>
+</div>

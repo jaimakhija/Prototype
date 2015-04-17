@@ -1,0 +1,11 @@
+.approved {
+    border-color: green;
+}
+
+.proposed {
+    border-color: orange;
+}
+
+.rejected {
+    border-color: red;
+}
