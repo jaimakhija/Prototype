@@ -1,0 +1,5 @@
+<input type="text" class="form-control" ng-model="pushPlanFilter" placeholder="search">
+<accordion>
+    <accordion-group heading="{{plan.name}} -- {{plan.date}}" ng-repeat="plan in pushPlanList | filter:pushPlanFilter">
+        {{plan.content}}
+    </accordion-group>
