@@ -1,4 +1,4 @@
-angular.module('prototype').controller('HomeCtrl', ['$scope', function($scope) {
+angular.module('prototype', ['ngTable']).controller('HomeCtrl', ['$scope','$ngTableParams', function($scope) {
     $scope.user="Jayesh Makhija";
     $scope.prodServer = "17th March 2015";
     $scope.ip = "1.1.7.160";
@@ -14,4 +14,5 @@ angular.module('prototype').controller('HomeCtrl', ['$scope', function($scope) {
     getData: function ($defer, params){
     	$defer.resolve(pushPlans);
     }
+    console.log("It works");
 }]);
