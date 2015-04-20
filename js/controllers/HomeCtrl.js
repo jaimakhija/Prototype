@@ -1,10 +1,6 @@
-angular.module('prototype').controller('HomeCtrl', ['$scope', '$ngTableParams', function($scope) {
-    $scope.user = "Jayesh Makhija";
-    $scope.prodServer = "17th March 2015";
-    $scope.ip = "1.1.7.160";
-    $scope.myServer = "7th February 2015";
+angular.module('prototype').controller('HomeCtrl', ['$scope', function($scope) {
+    $scope.projects = projectsData;
 
-    $scope.tableParams = new ngTableParams(parameter, settings);
     $scope.pushPlans = [{
         name: "CPAUCBU-26",
         date: "17th March 2015"
@@ -23,4 +19,20 @@ angular.module('prototype').controller('HomeCtrl', ['$scope', '$ngTableParams', 
         $defer.resolve(pushPlans);
     }
     console.log("It works");
+
+
+    $scope.fields = [{
+        name: "stefan",
+        type: 'email',
+        placeholder: "email",
+        required: ''
+    }];
 }]);
+
+var projectsData = [{
+    name: "Viper"
+}, {
+    name: "Test"
+}, {
+    name: "Data"
+}]

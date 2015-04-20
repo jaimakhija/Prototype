@@ -1,4 +1,4 @@
-var app = angular.module('prototype', ['ui.bootstrap', 'ngRoute', 'ngTable'])
+var app = angular.module('prototype', ['ui.bootstrap', 'ngRoute'])
     .config(['$routeProvider',
         function($routeProvider) {
             $routeProvider.
@@ -6,7 +6,7 @@ var app = angular.module('prototype', ['ui.bootstrap', 'ngRoute', 'ngTable'])
                 templateUrl: 'html/home.html',
                 controller: 'HomeCtrl'
             }).
-            when('/pushPlans/', {
+            when('/pushPlans', {
                 templateUrl: 'html/pushPlans.html',
                 controller: 'PushPlanCtrl'
             }).

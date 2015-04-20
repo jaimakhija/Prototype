@@ -9,3 +9,11 @@
 .rejected {
     border-color: red;
 }
+
+.project-btn {
+    margin: 2px;
+}
+
+.project-row {
+    margin-bottom: 5px;
+}

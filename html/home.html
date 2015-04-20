@@ -1,15 +1,36 @@
-<div class="container" ng-controller="HomeCtrl">
-  Welcome, {{user}}
-  <div class="row">
-      Production Server : {{prodServer}}
-      My Server-{{ip}} : {{myServer}}  <span class="glyphicon glyphicon-download" aria-hidden="true">Update Server/Merge from production</span>
-  </div> 
-  <div class="row">
-    <table ng-table="tableParams">
-      <tr ng-repeat="x in pushPlans">
-        <td data-title>"'Name'"</td>
-        <td data-title>"'Date'"</td>
-      </tr>
-    </table>
-    <a href='#/pushplans/'>View/Checkout PushPlans</a>
-  </div>
+<div class="container-fluid">
+    <div class="row">
+        <h3>Production State:<span class="label label-default">Viper</span></h3>
+        <h3>My State:<span class="label label-default">Viper</span></h3>
+    </div>
+</div>
+<div class="container">
+    <H1>Projects</H1>
+    <div class='row'>
+        <div class="">
+            <input type="text" class="form-control" ng-model="filterName" placeholder="search" ng-change="updateFilter()">
+        </div>
+        <div class="">
+            <label class="checkbox-inline">
+                <input ng-model="filterCompleted" ng-change="updateFilter()" type="checkbox">Show Completed Projects
+            </label>
+        </div>
+    </div>
+    <div class="row label-primary project-row" ng-repeat='project in projects'>
+        <div class="col-md-1">
+            <!-- FORM FIELD BUTTONS (REMOVE/PUSHUP/PUSHDOWN/EDIT) -->
+            <div class="row">
+                <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-up project-btn"></button>
+                <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove project-btn"></button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-down project-btn"></button>
+                <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-pencil project-btn"></button>
+            </div>
+        </div>
+        <h1>{{project.name}}</h1>
+    </div>
+    <div class="row">
+        <a href='#/pushPlans'>View/Checkout PushPlans</a>
+    </div>
+</div>
