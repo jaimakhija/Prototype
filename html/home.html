@@ -5,11 +5,11 @@
       My Server-{{ip}} : {{myServer}}  <span class="glyphicon glyphicon-download" aria-hidden="true">Update Server/Merge from production</span>
   </div> 
   <div class="row">
-    <table ng-table class="table">
+    <table ng-table="tableParams">
       <tr ng-repeat="x in pushPlans">
         <td data-title>"'Name'"</td>
         <td data-title>"'Date'"</td>
       </tr>
     </table>
-    <a href='/pushplans/'>View/Checkout PushPlans</a>
+    <a href='#/pushplans/'>View/Checkout PushPlans</a>
   </div>
