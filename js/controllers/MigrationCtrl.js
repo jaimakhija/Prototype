@@ -1,20 +1,9 @@
-angular.module('prototype').controller('PushPlanCtrl', ['$scope', function($scope) {
-    $scope.pushPlanList = pushPlanDataFromSomewhere;
-    $scope.filterName;
-    $scope.filter = {}
-    $scope.projects = ['Project that is in dev', 'Project that is complete', 'Project that is in testing'];
-
-    $scope.updateFilter = function() {
-        $scope.filter = {};
-        $scope.filter.name = $scope.filterName;
-        if ($scope.filterManual || $scope.filterDatabase || $scope.filterConfiguration) $scope.filter.flags = {};
-        if ($scope.filterManual) $scope.filter.flags.manual = true;
-        if ($scope.filterDatabase) $scope.filter.flags.database = true;
-        if ($scope.filterConfiguration) $scope.filter.flags.configuration = true;
-    }
+angular.module('prototype').controller('MigrationCtrl', ['$scope', function($scope) {
+    $scope.rollbacks = rollbackpushplandata;
+    $scope.rollouts = rolloutpushplandata;
 }]);
 
-var pushPlanDataFromSomewhere = [{
+var rollbackpushplandata = [{
     "_id": "553175068dd6cc442a90cb25",
     "status": 'approved',
     "name": "GUIE-1907 - Remove Non-Custom DAP Segments",
@@ -34,3 +23,5 @@ var pushPlanDataFromSomewhere = [{
     "date": "2014-09-21T01:57:00 +04:00",
     "content": "# Install server /#    GUI M2P\ / install / viper - gui - ctl.git / bin / m2p.pl--product = GUI--branch = production / #GUIAPP M2P\ / install / viper - gui - ctl.git / bin / m2p.pl--product = GUIAPPJOBS--branch = production\ ",
 }]
+
+var rolloutpushplandata = [];

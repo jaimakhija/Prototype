@@ -1,36 +1,34 @@
-<div class="container-fluid">
-    <div class="row">
-        <h3>Production State:<span class="label label-default">Viper</span></h3>
-        <h3>My State:<span class="label label-default">Viper</span></h3>
-    </div>
-</div>
 <div class="container">
-    <H1>Projects</H1>
+    <div class="row">
+        <H1>Projects</H1>
+    </div>
+    <div class="row">
+        Selected Server: <a href="#/selectServer"> 1.1.8.170 - GUIE-1907</a>
+    </div>
     <div class='row'>
-        <div class="">
-            <input type="text" class="form-control" ng-model="filterName" placeholder="search" ng-change="updateFilter()">
+        <div>
+            <input type="text" class="form-control" ng-model="filterName" placeholder="Search by name" ng-change="updateFilter()">
         </div>
         <div class="">
+            <div class="checkbox checkbox-primary checkbox-circle">
+            </div>
             <label class="checkbox-inline">
-                <input ng-model="filterCompleted" ng-change="updateFilter()" type="checkbox">Show Completed Projects
+                <input ng-model="filterComplete" ng-change="updateFilter()" type="checkbox">Show Completed Projects
             </label>
         </div>
     </div>
-    <div class="row label-primary project-row" ng-repeat='project in projects'>
-        <div class="col-md-1">
-            <!-- FORM FIELD BUTTONS (REMOVE/PUSHUP/PUSHDOWN/EDIT) -->
-            <div class="row">
-                <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-up project-btn"></button>
-                <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-remove project-btn"></button>
-            </div>
-            <div class="row">
-                <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-arrow-down project-btn"></button>
-                <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-pencil project-btn"></button>
+    <div class="row project-row" ng-class="{'label-success': project.status==='complete', 'label-warning': project.status==='testing', 'label-default': project.status==='development'}" ng-repeat='project in projects | filter:filter'>
+        <div class="col-md-12">
+            <div dropdown is-open="status.isopen">
+                <a href="#" class="dropdown-toggle no-underline" dropdown-toggle ng-disabled="disabled">
+                    <h3>{{project.name}} </h3>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#/migration">Checkout</a></li>
+                    <li><a href="#/pushPlans">View Push Plans</a></li>
+                    <li><a href="#">Jira</a></li>
+                </ul>
             </div>
         </div>
-        <h1>{{project.name}}</h1>
-    </div>
-    <div class="row">
-        <a href='#/pushPlans'>View/Checkout PushPlans</a>
     </div>
 </div>

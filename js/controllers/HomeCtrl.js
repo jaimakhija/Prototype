@@ -1,5 +1,41 @@
 angular.module('prototype').controller('HomeCtrl', ['$scope', function($scope) {
     $scope.projects = projectsData;
+    $scope.filter = {
+        status: "!complete"
+    };
+
+    $scope.open = function(size) {
+
+        var modalInstance = $modal.open({
+            templateUrl: 'myModalContent.html',
+            controller: function() {},
+            size: size,
+            resolve: {
+                items: function() {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+
+    $scope.updateFilter = function() {
+        $scope.filter = {};
+        $scope.filter.name = $scope.filterName;
+        if ($scope.filterComplete) delete $scope.filter.status;
+        if (!$scope.filterComplete) $scope.filter.status = "!complete";
+    }
+
+    //checkout
+    //view push plans
+    //go to Jira
+    //
 
     $scope.pushPlans = [{
         name: "CPAUCBU-26",
@@ -30,9 +66,12 @@ angular.module('prototype').controller('HomeCtrl', ['$scope', function($scope) {
 }]);
 
 var projectsData = [{
-    name: "Viper"
+    name: "Project that is in Dev",
+    status: "development"
 }, {
-    name: "Test"
+    name: "Project that is complete",
+    status: "complete"
 }, {
-    name: "Data"
+    name: "Project that is in testing",
+    status: "testing"
 }]

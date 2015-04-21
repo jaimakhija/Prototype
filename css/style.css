@@ -12,8 +12,23 @@
 
 .project-btn {
     margin: 2px;
+    background-color: transparent;
 }
 
 .project-row {
     margin-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.no-underline,
+.no-underline:hover {
+    color: #FFFFFF;
+    text-decoration: none !important;
+    border: none;
+}
+
+.navbar-dropdown {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

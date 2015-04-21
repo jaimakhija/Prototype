@@ -1,0 +1,43 @@
+<div class="container">
+    <div class='row'>
+        <h1>Project Migration<small> Push Plan List</small></h1>
+        <div class="">
+            <input type="text" class="form-control" ng-model="filterName" placeholder="search" ng-change="updateFilter()">
+        </div>
+        <div class="">
+            <label class="checkbox-inline">
+                <input ng-model="filterManual" ng-change="updateFilter()" type="checkbox">Manual
+            </label>
+            <label class="checkbox-inline ">
+                <input ng-model="filterDatabase " ng-change="updateFilter()" type="checkbox">Database
+            </label>
+            <label class="checkbox-inline ">
+                <input ng-model="filterConfiguration" ng-change="updateFilter()" type="checkbox">Config
+            </label>
+        </div>
+    </div>
+    <div class="row ">
+        <h2>Roll Backs</h2>
+        <accordion close-others="false ">
+            <accordion-group ng-class="{ approved: plan.status==='approved' , proposed: plan.status==='proposed' , rejected: plan.status==='rejected' } " ng-repeat="plan in rollbacks | filter:filter ">
+                <accordion-heading>
+                    <i ng-if="plan.flags.manual " class="fa fa-user "></i>
+                    <i ng-if="plan.flags.database " ) class="fa fa-table "></i>
+                    <i ng-if="plan.flags.configuration" class="fa fa-wrench"></i> {{plan.name}} -- {{plan.date}}
+                </accordion-heading>
+                {{plan.content}} {{plan.status}}
+            </accordion-group>
+        </accordion>
+        <h2>Roll Outs</h2>
+        <accordion close-others="false ">
+            <accordion-group ng-class="{ approved: plan.status==='approved' , proposed: plan.status==='proposed' , rejected: plan.status==='rejected' } " ng-repeat="plan in rollouts | filter:filter ">
+                <accordion-heading>
+                    <i ng-if="plan.flags.manual " class="fa fa-user "></i>
+                    <i ng-if="plan.flags.database " ) class="fa fa-table "></i>
+                    <i ng-if="plan.flags.configuration" class="fa fa-wrench"></i> {{plan.name}} -- {{plan.date}}
+                </accordion-heading>
+                {{plan.content}} {{plan.status}}
+            </accordion-group>
+        </accordion>
+    </div>
+</div>

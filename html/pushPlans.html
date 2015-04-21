@@ -1,23 +1,47 @@
-<div class="container" ng-controller="PushPlanCtrl">
-    <div class='row'>
-        <div class="">
-            <input type="text" class="form-control" ng-model="filterName" placeholder="search" ng-change="updateFilter()">
+<div class="container">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Project:</label>
+            <div class="col-sm-6">
+                <input type="text" ng-model="selected" typeahead="project for project in projects | filter:$viewValue | limitTo:8" class="form-control input-sm" ng-disabled="allProjectsIsChecked">
+            </div>
+            <div class="col-sm-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="allProjectsIsChecked"> All
+                    </label>
+                </div>
+            </div>
         </div>
-        <div class="">
-            <label class="checkbox-inline">
-                <input ng-model="filterManual" ng-change="updateFilter()" type="checkbox">Manual
-            </label>
-            <label class="checkbox-inline ">
-                <input ng-model="filterDatabase " ng-change="updateFilter()" type="checkbox">Database
-            </label>
+    </div>
+    <div class="row">
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label" for="formGroupInputLarge"></label>
+            <div class="form-group form-group-sm md-col-8">
+            </div>
         </div>
+    </div>
+    <div class="row">
+        <input type="text" class="form-control" ng-model="filterName" placeholder="search" ng-change="updateFilter()">
+    </div>
+    <div class="row">
+        <label class="checkbox-inline">
+            <input ng-model="filterManual" ng-change="updateFilter()" type="checkbox">Manual
+        </label>
+        <label class="checkbox-inline ">
+            <input ng-model="filterDatabase " ng-change="updateFilter()" type="checkbox">Database
+        </label>
+        <label class="checkbox-inline ">
+            <input ng-model="filterConfiguration" ng-change="updateFilter()" type="checkbox">Config
+        </label>
     </div>
     <div class="row ">
         <accordion close-others="false ">
             <accordion-group ng-class="{ approved: plan.status==='approved' , proposed: plan.status==='proposed' , rejected: plan.status==='rejected' } " ng-repeat="plan in pushPlanList | filter:filter ">
                 <accordion-heading>
                     <i ng-if="plan.flags.manual " class="fa fa-user "></i>
-                    <i ng-if="plan.flags.database " ) class="fa fa-table "></i> {{plan.name}} -- {{plan.date}}
+                    <i ng-if="plan.flags.database " ) class="fa fa-table "></i>
+                    <i ng-if="plan.flags.configuration" class="fa fa-wrench"></i> {{plan.name}} -- {{plan.date}}
                 </accordion-heading>
                 {{plan.content}} {{plan.status}}
             </accordion-group>
